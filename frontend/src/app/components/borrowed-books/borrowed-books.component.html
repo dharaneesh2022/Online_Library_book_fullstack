@@ -1,0 +1,8 @@
+<div *ngIf="message" [style.color]="error ? 'red' : 'green'">{{ message }}</div>
+
+<ul>
+  <li *ngFor="let book of borrowedBooks">
+    <strong>{{ book.bookTitle }}</strong> by {{ book.author }} - Borrowed by <em>{{ book.userName }}</em>
+    <button (click)="returnBook(book)">Return</button>
+  </li>
+</ul>

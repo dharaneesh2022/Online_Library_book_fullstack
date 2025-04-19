@@ -1,0 +1,10 @@
+<div *ngIf="book">
+  <h2>{{ book.title }} by {{ book.author }}</h2>
+  <p><strong>Status:</strong> {{ book.available ? 'Available' : 'Unavailable' }}</p>
+  <p *ngIf="book.book_details?.summary"><strong>Summary:</strong> {{ book.book_details.summary }}</p>
+
+  <input type="text" placeholder="Enter your name" [(ngModel)]="userName" />
+  <button (click)="borrowBook()">Borrow</button>
+
+  <p [style.color]="error ? 'red' : 'green'">{{ message }}</p>
+</div>
