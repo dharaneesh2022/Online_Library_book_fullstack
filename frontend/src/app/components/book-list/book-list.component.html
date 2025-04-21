@@ -1,6 +1,15 @@
 <div class="container py-5">
+  <div class="mb-4">
+    <input
+      type="text"
+      class="form-control search-bar"
+      placeholder="Search by title or author..."
+      [(ngModel)]="searchText"
+    />
+  </div>
+
   <div class="row g-4">
-    <div *ngFor="let book of books; trackBy: trackByBookId" class="col-sm-6 col-lg-4">
+    <div *ngFor="let book of filteredBooks(); trackBy: trackByBookId" class="col-sm-6 col-lg-4">
       <div class="card book-card h-100 shadow-lg text-light bg-dark">
         <img
           *ngIf="book.image_url"

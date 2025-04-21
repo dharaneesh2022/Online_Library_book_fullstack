@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { BorrowedBooksComponent } from './components/borrowed-books/borrowed-books.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { BookDetailsComponent } from './components/book-details/book-details.component'; // <-- ✅ Add this
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     BookListComponent,
     BorrowedBooksComponent,
     NavbarComponent,
-    BookDetailsComponent 
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,

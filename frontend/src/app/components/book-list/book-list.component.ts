@@ -9,6 +9,7 @@ import { BookService } from '../../services/book.service';
 })
 export class BookListComponent implements OnInit {
   books: any[] = [];
+  searchText: string = '';
 
   constructor(
     private bookService: BookService,
@@ -18,7 +19,6 @@ export class BookListComponent implements OnInit {
   ngOnInit() {
     this.bookService.getAllBooks().subscribe({
       next: (data) => {
-        // Remove duplicates by ID if any
         const uniqueBooks = new Map<number, any>();
         data.forEach((book: any) => uniqueBooks.set(book.id, book));
         this.books = Array.from(uniqueBooks.values());
@@ -30,6 +30,14 @@ export class BookListComponent implements OnInit {
         console.error('Error fetching books:', err);
       }
     });
+  }
+
+  filteredBooks() {
+    const search = this.searchText.toLowerCase();
+    return this.books.filter(book =>
+      book.title.toLowerCase().includes(search) ||
+      book.author.toLowerCase().includes(search)
+    );
   }
 
   navigateToBorrow(bookId: number) {
