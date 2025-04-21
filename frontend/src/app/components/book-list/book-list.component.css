@@ -1,46 +1,154 @@
-:host {
-  display: block;
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
+/* Global body styling */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+/* Book card styling */
 .book-card {
-  background-color: #f9f9f9;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #1e1e2f;
+  border: none;
+  margin: 15px;
 }
 
 .book-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 255, 255, 0.2);
 }
 
-.book-card h3 {
-  margin: 0 0 10px;
-  color: #2c3e50;
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00d2d3;
+  margin: 15px 0 10px;
 }
 
-.book-card p {
-  margin: 0 0 10px;
-  font-size: 15px;
+.card-text {
+  font-size: 0.95rem;
+  color: #b0b0b0;
 }
 
-.book-card button {
-  padding: 8px 14px;
-  font-size: 14px;
-  background-color: #2ecc71;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* View Button */
+.view-btn {
+  font-weight: 600;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #00d2d3;
+  border-color: #00d2d3;
+  padding: 10px 20px;
+  text-transform: uppercase;
 }
 
-.book-card button:hover {
-  background-color: #27ae60;
+.view-btn:hover {
+  background-color: #00d2d3;
+  color: #121212;
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.6em;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 255, 255, 0.1);
+  color: #00d2d3;
+  margin-top: 5px;
+}
+
+/* Image styling */
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 2px solid #333;
+  border-radius: 1rem 1rem 0 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Container and layout styles */
+.container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.col-sm-6,
+.col-lg-4 {
+  margin-bottom: 1.5rem;
+}
+
+/* Card body styling */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.card-body .card-title {
+  margin-bottom: 0.5rem;
+}
+
+.card-body .card-text {
+  margin-top: 1rem;
+  flex-grow: 1;
+}
+
+/* Align the button at the bottom */
+.mt-auto {
+  margin-top: auto;
+}
+
+/* Custom button styles */
+.btn-outline-info {
+  border-color: #00d2d3;
+  color: #00d2d3;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 12px 24px;
+  text-transform: uppercase;
+}
+
+.btn-outline-info:hover {
+  background-color: #00d2d3;
+  color: #121212;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-sm-6,
+  .col-lg-4 {
+    margin-bottom: 1.25rem;
+  }
+
+  .card-body {
+    padding: 15px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .btn-outline-info {
+    padding: 10px 20px;
+  }
 }

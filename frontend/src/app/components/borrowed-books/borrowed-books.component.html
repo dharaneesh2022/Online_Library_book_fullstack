@@ -1,8 +1,29 @@
-<div *ngIf="message" [style.color]="error ? 'red' : 'green'">{{ message }}</div>
+<div class="container mt-4">
+  <div *ngIf="message" class="alert" [ngClass]="{
+    'alert-success': !error,
+    'alert-danger': error
+  }">
+    {{ message }}
+  </div>
 
-<ul>
-  <li *ngFor="let book of borrowedBooks">
-    <strong>{{ book.bookTitle }}</strong> by {{ book.author }} - Borrowed by <em>{{ book.userName }}</em>
-    <button (click)="returnBook(book)">Return</button>
-  </li>
-</ul>
+  <div class="card shadow-sm" *ngIf="borrowedBooks.length > 0">
+    <div class="card-header bg-dark text-white">
+      Borrowed Books
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let book of borrowedBooks" class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="book-info d-flex align-items-center">
+          <div class="ml-3">
+            <strong>{{ book.bookTitle }}</strong> by {{ book.author }}<br />
+            <small class="text-muted">Borrowed by {{ book.userName }}</small>
+          </div>
+        </div>
+        <button class="btn btn-danger btn-sm" (click)="returnBook(book)">Return</button>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="borrowedBooks.length === 0" class="text-center mt-4 text-muted">
+    No borrowed books at the moment.
+  </div>
+</div>

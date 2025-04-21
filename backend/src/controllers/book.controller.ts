@@ -33,8 +33,8 @@ export const fetchBookById: RequestHandler = async (req, res) => {
 
 export const addBook: RequestHandler = async (req, res) => {
   try {
-    const { title, author } = req.body;
-    const newBook = await createBook(title, author);
+    const { title, author, image_url } = req.body;
+    const newBook = await createBook(title, author, image_url);
     res.status(201).json({ message: 'Book added successfully', newBook });
   } catch (error) {
     console.error('Error adding book:', error);
@@ -45,8 +45,8 @@ export const addBook: RequestHandler = async (req, res) => {
 export const updateBook: RequestHandler = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    const { title, author } = req.body;
-    const updated = await updateBookById(id, title, author);
+    const { title, author, image_url } = req.body;
+    const updated = await updateBookById(id, title, author, image_url);
     res.status(200).json({ message: 'Book updated', updated });
   } catch (error) {
     console.error('Error updating book:', error);

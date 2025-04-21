@@ -1,35 +1,97 @@
+/* General styling for the container */
 :host {
   display: block;
-  max-width: 800px;
-  margin: 30px auto;
+  max-width: 900px;
+  margin: 40px auto;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
 }
 
-div[style] {
+/* Styling for success and error messages */
+.alert {
+  margin-bottom: 20px;
   font-size: 16px;
-  margin-bottom: 16px;
   font-weight: 500;
+  border-radius: 8px;
+  padding: 15px;
+  transition: all 0.3s ease;
 }
 
+.alert-success {
+  background-color: #28a745;
+  color: white;
+  border: 1px solid #218838;
+}
+
+.alert-danger {
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid #c82333;
+}
+
+/* Card styling for the borrowed books list */
+.card {
+  border-radius: 8px;
+  border: none;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px 8px 0 0;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* List styling */
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
+/* List items for each borrowed book */
 li {
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 12px;
-  padding: 12px 16px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Book image styling */
+.book-info {
+  display: flex;
+  align-items: center;
+}
+
+.book-img {
+  width: 60px;  /* Adjust the size of the book image */
+  height: 90px;  /* Adjust the size of the book image */
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 15px;
 }
 
 li strong {
-  color: #2c3e50;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+li small {
+  font-size: 0.875rem;
+  color: #666;
 }
 
 li em {
@@ -37,17 +99,30 @@ li em {
   color: #555;
 }
 
+/* Button styling */
 button {
-  padding: 6px 12px;
+  padding: 8px 16px;
   font-size: 14px;
   background-color: #e74c3c;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Empty state styling */
+.text-center.mt-4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #777;
 }

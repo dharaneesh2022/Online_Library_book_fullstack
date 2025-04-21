@@ -1,49 +1,173 @@
+/* Host styling */
 :host {
   display: block;
-  max-width: 600px;
+  max-width: 750px;
   margin: 40px auto;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fdfdfd;
+  background-color: #1f2a44;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease-in-out; /* Smooth transition for scaling */
+  background: linear-gradient(135deg, #1e2a47, #2c3e6c);
 }
 
+/* Book image styling */
+.card-img-top {
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.card-img-top:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  box-shadow: 0 12px 30px rgba(0, 255, 255, 0.4); /* Glow effect */
+}
+
+/* Title and author */
 h2 {
-  color: #2c3e50;
-  margin-bottom: 10px;
+  color: #e0e0e0;
+  margin-bottom: 12px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
+h2:hover {
+  color: #00d2d3; /* Cyan color on hover */
+  transform: translateY(-5px); /* Slight upward movement on hover */
+}
+
+h2 small {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  transition: color 0.3s ease;
+}
+
+h2 small:hover {
+  color: #3498db; /* Blue color change on hover */
+}
+
+/* Paragraph styling */
 p {
-  font-size: 16px;
-  margin: 10px 0;
+  font-size: 18px;
+  color: #f5f5f5;
+  margin: 12px 0;
+  line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
+p strong {
+  font-weight: 700;
+  color: #00d2d3;
+}
+
+/* Status indicator for availability */
+.text-success {
+  color: #2ecc71;
+  transition: color 0.3s ease;
+}
+
+.text-danger {
+  color: #e74c3c;
+  transition: color 0.3s ease;
+}
+
+/* Input field for user name */
 input[type="text"] {
   width: 100%;
-  padding: 8px;
-  margin: 12px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 14px 20px;
+  margin: 15px 0;
+  border: 2px solid #ddd;
+  border-radius: 10px;
   font-size: 16px;
+  background-color: #f1f1f1;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
+input[type="text"]:focus {
+  border-color: #3498db;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+  transform: scale(1.02); /* Slight zoom effect when focused */
+}
+
+/* Button styling */
 button {
-  padding: 10px 16px;
-  font-size: 16px;
+  padding: 14px 22px;
+  font-size: 18px;
   background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.4s ease, transform 0.2s ease, box-shadow 0.4s ease;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 button:hover {
   background-color: #2980b9;
+  transform: translateY(-4px); /* Slight lift effect */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
 }
 
-p[style] {
-  margin-top: 15px;
-  font-weight: bold;
+/* Message area with dynamic classes for success/error */
+.mt-3 p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+  text-align: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.mt-3 .text-success {
+  color: #2ecc71;
+}
+
+.mt-3 .text-danger {
+  color: #e74c3c;
+}
+
+.mt-3 p:hover {
+  transform: scale(1.05); /* Slight zoom effect when hovering on message */
+}
+
+/* Adding subtle animations to card elements */
+.card-body {
+  position: relative;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  :host {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+  }
 }

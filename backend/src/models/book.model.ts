@@ -6,7 +6,7 @@ export const getAllBooks = (): Promise<any[]> => {
   return new Promise((resolve, reject) => {
     db.query(
       `SELECT 
-         b.id, b.title, b.author, b.available,
+         b.id, b.title, b.author, b.available, b.image_url,
          bd.genre, bd.publication_year, bd.isbn, bd.language, bd.pages, bd.summary
        FROM books b
        LEFT JOIN book_details bd ON b.id = bd.book_id`,
@@ -18,6 +18,7 @@ export const getAllBooks = (): Promise<any[]> => {
           title: row.title,
           author: row.author,
           available: row.available,
+          image_url: row.image_url, // ✅ Include image_url
           book_details: {
             genre: row.genre,
             publication_year: row.publication_year,
@@ -39,7 +40,7 @@ export const getBookById = (id: number): Promise<any> => {
   return new Promise((resolve, reject) => {
     db.query(
       `SELECT 
-         b.id, b.title, b.author, b.available,
+         b.id, b.title, b.author, b.available, b.image_url,
          bd.genre, bd.publication_year, bd.isbn, bd.language, bd.pages, bd.summary
        FROM books b
        LEFT JOIN book_details bd ON b.id = bd.book_id
@@ -58,6 +59,7 @@ export const getBookById = (id: number): Promise<any> => {
           title: book.title,
           author: book.author,
           available: book.available,
+          image_url: book.image_url, // ✅ Include image_url
           book_details: {
             genre: book.genre,
             publication_year: book.publication_year,
@@ -86,12 +88,16 @@ export const updateBookAvailability = (id: number, available: boolean): Promise<
   });
 };
 
-// ✅ Create a new book
-export const createBook = (title: string, author: string): Promise<any> => {
+// ✅ Create a new book (with optional image)
+export const createBook = (
+  title: string,
+  author: string,
+  image_url: string = ''
+): Promise<any> => {
   return new Promise((resolve, reject) => {
     db.query(
-      'INSERT INTO books (title, author, available) VALUES (?, ?, ?)',
-      [title, author, true],
+      'INSERT INTO books (title, author, available, image_url) VALUES (?, ?, ?, ?)',
+      [title, author, true, image_url],
       (err, results) => {
         if (err) return reject(err);
         resolve(results);
@@ -100,12 +106,17 @@ export const createBook = (title: string, author: string): Promise<any> => {
   });
 };
 
-// ✅ Update a book
-export const updateBookById = (id: number, title: string, author: string): Promise<any> => {
+// ✅ Update a book (including image)
+export const updateBookById = (
+  id: number,
+  title: string,
+  author: string,
+  image_url: string
+): Promise<any> => {
   return new Promise((resolve, reject) => {
     db.query(
-      'UPDATE books SET title = ?, author = ? WHERE id = ?',
-      [title, author, id],
+      'UPDATE books SET title = ?, author = ?, image_url = ? WHERE id = ?',
+      [title, author, image_url, id],
       (err, results) => {
         if (err) return reject(err);
         resolve(results);

@@ -18,16 +18,25 @@ export class BookListComponent implements OnInit {
   ngOnInit() {
     this.bookService.getAllBooks().subscribe({
       next: (data) => {
-        console.log('Books fetched:', data); // ✅ Debug log
-        this.books = data;
+        // Remove duplicates by ID if any
+        const uniqueBooks = new Map<number, any>();
+        data.forEach((book: any) => uniqueBooks.set(book.id, book));
+        this.books = Array.from(uniqueBooks.values());
+
+        console.log('Books fetched:', this.books.length);
+        console.table(this.books);
       },
       error: (err) => {
-        console.error('Error fetching books:', err); // ❌ Error log
+        console.error('Error fetching books:', err);
       }
     });
   }
 
   navigateToBorrow(bookId: number) {
     this.router.navigate(['/borrow', bookId]);
+  }
+
+  trackByBookId(index: number, book: any): number {
+    return book.id;
   }
 }

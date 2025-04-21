@@ -51,7 +51,7 @@ export class BookDetailsComponent implements OnInit {
     this.bookService.borrowBook(this.userName.trim(), this.book.id).subscribe({
       next: (res) => {
         this.message = res.message || 'Book borrowed successfully.';
-        this.book.available = false; // 🔄 Update UI to show unavailability
+        this.book.available = false;
         this.error = false;
       },
       error: (err) => {

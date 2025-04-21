@@ -1,33 +1,31 @@
-/* mat-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-size: 1.1rem;
-}
-
-mat-toolbar span {
+/* Highlight the active link */
+.nav-link.active {
   font-weight: bold;
-  font-size: 1.4rem;
-  color: white;
+  text-decoration: underline;
+  color: #fff !important;
 }
 
-a[mat-button] {
-  color: #fff;
-  margin-left: 10px;
-  text-transform: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+/* Add subtle transition and hover effect */
+.nav-link {
+  transition: all 0.2s ease-in-out;
+  color: #e0e0e0 !important;
 }
 
-a[mat-button]:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
+.nav-link:hover {
+  text-decoration: underline;
+  color: #ffffff !important;
 }
 
-.active-link {
-  background-color: rgba(255, 255, 255, 0.25);
-  border-radius: 6px;
+/* Optional: Increase spacing and improve font */
+.navbar-nav .nav-link {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-size: 1.05rem;
+}
+
+/* Brand styling for consistency */
+.navbar-brand {
   font-weight: 600;
-} */
+  font-size: 1.25rem;
+  color: #fff !important;
+}
